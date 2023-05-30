@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
-import {Colors, styled} from '../../theme';
+import {styled} from '../../theme';
 import styles from './styles';
 import quizApi from '../../services/quizApi';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import ImageRN from 'react-native-fast-image';
-import SwipeGesture from './swipe-gesture';
 
 const CardText = styled(Text, styles.question);
 const PlaylistText = styled(Text, styles.playlistText);

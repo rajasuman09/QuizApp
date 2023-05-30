@@ -1,21 +1,16 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
+import React, {PureComponent} from 'react';
+import {connect} from 'react-redux';
 
-import { getStyle } from ".";
+import {getStyle} from '.';
 
 export const styled = (WrappedComponent, styler, options = {}) =>
-  connect((state) => ({
-    themeId: "dark", // Hardcoded the themeId as we are not implementing preferences from user with redux
+  connect(state => ({
+    themeId: 'dark', // Hardcoded the themeId as we are not implementing preferences from user with redux
   }))(
     class WrappedComponentStyled extends PureComponent {
-      _injectStyle = ({ theme, toggleTheme } = {}) => {
-        const nextProps = { ...this.props };
-        const {
-          styleName = "style",
-          noTheme,
-          styleMap,
-          ...extraProps
-        } = options;
+      _injectStyle = ({theme, toggleTheme} = {}) => {
+        const nextProps = {...this.props};
+        const {styleName = 'style', noTheme, styleMap, ...extraProps} = options;
 
         nextProps.theme = theme;
         nextProps.toggleTheme = toggleTheme;
@@ -26,7 +21,7 @@ export const styled = (WrappedComponent, styler, options = {}) =>
               (nextProps[styleMap[index]] = [
                 getStyle(styler, nextProps),
                 this.props[styleMap[index]],
-              ])
+              ]),
           );
         } else {
           nextProps[styleName] = [
@@ -35,14 +30,14 @@ export const styled = (WrappedComponent, styler, options = {}) =>
           ];
         }
 
-        return { ...nextProps, ...extraProps };
+        return {...nextProps, ...extraProps};
       };
 
       render() {
         const nextProps = this._injectStyle();
         return <WrappedComponent {...nextProps} />;
       }
-    }
+    },
   );
 
 export default styled;

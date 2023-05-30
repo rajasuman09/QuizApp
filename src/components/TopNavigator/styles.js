@@ -1,4 +1,4 @@
-import { Fonts, Colors } from "../../theme";
+import { Colors } from "../../theme";
 
 const styles = {
   tabBar: ({ themeId }) => ({
